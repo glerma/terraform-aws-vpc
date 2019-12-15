@@ -56,19 +56,21 @@ resource "aws_vpc_ipv4_cidr_block_association" "this" {
 
 resource "aws_flow_log" "this" {
   count = var.create_vpc && var.enable_vpc_flowlogs ? 1 : 0
-  iam_role_arn    = "${aws_iam_role.this.arn}"
-  log_destination = "${aws_cloudwatch_log_group.this.arn}"
-  traffic_type    = "ALL"
-  vpc_id          = "${aws_vpc.this.id}"
+  iam_role_arn    = "${aws_iam_role.this[count.index].arn}"
+  log_destination = "${aws_cloudwatch_log_group.this[count.index].arn}"
+  traffic_type    = var.vpc_flowlogs_traffic_type
+  vpc_id          = "${aws_vpc.this[count.index].id}"
 }
 
 resource "aws_cloudwatch_log_group" "this" {
   count = var.create_vpc && var.enable_vpc_flowlogs ? 1 : 0
   name = var.vpc_cloudwatch_log_group_name
-  
+  name_prefix = var.vpc_cloudwatch_log_group_name_prefix
+  retention_in_days = var.vpc_cloudwatch_log_group_retention_in_days
 }
 
 resource "aws_iam_role" "this" {
+  count = var.create_vpc && var.enable_vpc_flowlogs ? 1 : 0
   name = var.vpc_flowlogs_role_name 
 
   assume_role_policy = <<EOF
@@ -89,8 +91,9 @@ EOF
 }
 
 resource "aws_iam_role_policy" "this" {
+  count = var.create_vpc && var.enable_vpc_flowlogs ? 1 : 0
   name = var.vpc_flowlogs_policy_name
-  role = "${aws_iam_role.this.id}"
+  role = "${aws_iam_role.this[count.index].id}"
 
   policy = <<EOF
 {

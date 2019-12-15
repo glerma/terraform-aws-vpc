@@ -16,10 +16,28 @@ variable "enable_vpc_flowlogs" {
   default = true
 }
 
+variable "vpc_flowlogs_traffic_type" {
+  description = ""
+  type = "string"
+  default = "ALL"
+}
+
 variable "vpc_cloudwatch_log_group_name" {
   description = "The name of the flow log cloud watch group"
   type = string
-  default = "VPCLogGroup"
+  default =  null
+}
+
+variable "vpc_cloudwatch_log_group_name_prefix" {
+  description = "Creates a unique name beginning with the specified prefix. Conflicts with name."
+  type = string
+  default = null
+}
+
+variable "vpc_cloudwatch_log_group_retention_in_days" {
+  description = "Specifies the number of days you want to retain log events in the specified log group"
+  type = number
+  default = null
 }
 
 variable "vpc_flowlogs_role_name" {
