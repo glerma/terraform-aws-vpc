@@ -10,6 +10,30 @@ variable "name" {
   default     = ""
 }
 
+variable "enable_vpc_flowlogs" {
+  description "If true, enables creation of flowlogs for the VPC"
+  type = bool
+  default = true
+}
+
+variable "vpc_cloudwatch_log_group_name" {
+  description = "The name of the flow log cloud watch group"
+  type = string
+  default = "VPCLogGroup"
+}
+
+variable "vpc_flowlogs_role_name" {
+  description = "The name of the flow logs IAM role"
+  type = string
+  default = "VPCFlowlogsRole"
+}
+
+variable "vpc_flowlogs_policy_name" {
+  description = "Th ename of the VPC flowlogs access policy"
+  type = string
+  default = "VPCFlowlogsPolicy"
+}
+
 variable "cidr" {
   description = "The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden"
   type        = string
