@@ -28,6 +28,13 @@ variable "vpc_cloudwatch_log_group_name" {
   default =  null
 }
 
+variable "vpc_cloudwatch_log_group_tags" {
+  description = "Additional tags for the VPC Cloudwatch log group"
+  type        = map(string)
+  default     = {}
+}
+
+
 variable "vpc_cloudwatch_log_group_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name."
   type = string

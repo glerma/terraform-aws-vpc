@@ -67,6 +67,10 @@ resource "aws_cloudwatch_log_group" "this" {
   name = var.vpc_cloudwatch_log_group_name
   name_prefix = var.vpc_cloudwatch_log_group_name_prefix
   retention_in_days = var.vpc_cloudwatch_log_group_retention_in_days
+  tags = merge(
+    var.tags,
+    var.vpc_cloudwatch_log_group_tags,
+  )
 }
 
 resource "aws_iam_role" "this" {
