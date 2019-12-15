@@ -11,7 +11,7 @@ variable "name" {
 }
 
 variable "enable_vpc_flowlogs" {
-  description "If true, enables creation of flowlogs for the VPC"
+  description = "If true, enables creation of flowlogs for the VPC"
   type = bool
   default = true
 }
