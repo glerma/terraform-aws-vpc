@@ -56,10 +56,10 @@ resource "aws_vpc_ipv4_cidr_block_association" "this" {
 
 resource "aws_flow_log" "this" {
   count = var.create_vpc && var.enable_vpc_flowlogs ? 1 : 0
-  iam_role_arn    = "${aws_iam_role.this[count.index].arn}"
-  log_destination = "${aws_cloudwatch_log_group.this[count.index].arn}"
+  iam_role_arn    = aws_iam_role.this[count.index].arn
+  log_destination = aws_cloudwatch_log_group.this[count.index].arn
   traffic_type    = var.vpc_flowlogs_traffic_type
-  vpc_id          = "${aws_vpc.this[count.index].id}"
+  vpc_id          = aws_vpc.this[count.index].id
 }
 
 resource "aws_cloudwatch_log_group" "this" {
