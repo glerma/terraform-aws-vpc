@@ -97,7 +97,7 @@ EOF
 resource "aws_iam_role_policy" "this" {
   count = var.create_vpc && var.enable_vpc_flowlogs ? 1 : 0
   name = var.vpc_flowlogs_policy_name
-  role = "${aws_iam_role.this[count.index].id}"
+  role = aws_iam_role.this[count.index].id
 
   policy = <<EOF
 {
