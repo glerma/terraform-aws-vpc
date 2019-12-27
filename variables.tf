@@ -1866,3 +1866,8 @@ variable "elasticache_outbound_acl_rules" {
   ]
 }
 
+variable "endpoints_use_default_security_group" {
+  description = "If set to true, overrides a manual list of security group ids entries with the default VPC Security Group ID. Used on VPC endpoint types of 'Interface'."
+  type = bool
+  default = false
+}
