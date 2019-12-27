@@ -294,7 +294,6 @@ resource "aws_vpc_endpoint" "ec2messages" {
   service_name      = data.aws_vpc_endpoint_service.ec2messages[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = var.ec2messages_endpoint_security_group_ids
   security_group_ids  = ["%{ if var.endpoints_use_default_security_group == true }${data.aws_security_group.default.id}%{ else }var.ec2messages_endpoint_security_group_ids%{ endif }"]
   subnet_ids          = coalescelist(var.ec2messages_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ec2messages_endpoint_private_dns_enabled
@@ -496,7 +495,6 @@ resource "aws_vpc_endpoint" "sns" {
   service_name      = data.aws_vpc_endpoint_service.sns[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = var.sns_endpoint_security_group_ids
   security_group_ids  = ["%{ if var.endpoints_use_default_security_group == true }${data.aws_security_group.default.id}%{ else }var.sns_endpoint_security_group_ids%{ endif }"]
   subnet_ids          = coalescelist(var.sns_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.sns_endpoint_private_dns_enabled
@@ -915,7 +913,6 @@ resource "aws_vpc_endpoint" "appstream" {
   service_name      = data.aws_vpc_endpoint_service.appstream[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = var.appstream_endpoint_security_group_ids
   security_group_ids  = ["%{ if var.endpoints_use_default_security_group == true }${data.aws_security_group.default.id}%{ else }var.appstream_endpoint_security_group_ids%{ endif }"]
   subnet_ids          = coalescelist(var.appstream_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.appstream_endpoint_private_dns_enabled
@@ -938,7 +935,6 @@ resource "aws_vpc_endpoint" "athena" {
   service_name      = data.aws_vpc_endpoint_service.athena[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = var.athena_endpoint_security_group_ids
   security_group_ids  = ["%{ if var.endpoints_use_default_security_group == true }${data.aws_security_group.default.id}%{ else }var.athena_endpoint_security_group_ids%{ endif }"]
   subnet_ids          = coalescelist(var.athena_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.athena_endpoint_private_dns_enabled
