@@ -13,12 +13,12 @@ variable "name" {
 variable "enable_vpc_flowlogs" {
   description = "If true, enables creation of flowlogs for the VPC"
   type = bool
-  default = true
+  default = false
 }
 
 variable "vpc_flowlogs_traffic_type" {
   description = ""
-  type = "string"
+  type = string
   default = "ALL"
 }
 
@@ -33,7 +33,6 @@ variable "vpc_cloudwatch_log_group_tags" {
   type        = map(string)
   default     = {}
 }
-
 
 variable "vpc_cloudwatch_log_group_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name."
