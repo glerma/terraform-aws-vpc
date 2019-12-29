@@ -43,7 +43,7 @@ variable "vpc_cloudwatch_log_group_name_prefix" {
 variable "vpc_cloudwatch_log_group_retention_in_days" {
   description = "Specifies the number of days you want to retain log events in the specified log group"
   type = number
-  default = null
+  default = 90
 }
 
 variable "vpc_flowlogs_role_name" {
