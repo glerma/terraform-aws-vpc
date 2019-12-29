@@ -1871,3 +1871,64 @@ variable "endpoints_use_default_security_group" {
   type = bool
   default = false
 }
+
+variable "ingress_cidr_blocks" {
+  description = "List of IPv4 CIDR ranges to use on all ingress rules"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "ingress_ipv6_cidr_blocks" {
+  description = "List of IPv6 CIDR ranges to use on all ingress rules"
+  type        = list(string)
+  default     = ["::/0"]
+}
+
+variable "ingress_from_port" {
+  description = "The start port"
+  type        = string
+  default     = "0"
+}
+
+variable "ingress_to_port" {
+  description = "The end range port"
+  type        = string
+  default     = "0"
+}
+
+variable "ingress_protocol" {
+  description = "The protocol. If you select a protocol of '-1' (semantically equivalent to 'all', which is not a valid value here), you must specify a 'from_port' and 'to_port' equal to 0. If not icmp, tcp, udp, or '-1' use the protocol number"
+  type        = string
+  default     = "-1"
+}
+
+variable "egress_cidr_blocks" {
+  description = "List of IPv4 CIDR ranges to use on all egress rules"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "egress_ipv6_cidr_blocks" {
+  description = "List of IPv6 CIDR ranges to use on all egress rules"
+  type        = list(string)
+  default     = ["::/0"]
+}
+
+
+variable "egress_from_port" {
+  description = "The start port"
+  type        = string
+  default     = "0"
+}
+
+variable "egress_to_port" {
+  description = "The end range port"
+  type        = string
+  default     = "0"
+}
+
+variable "egress_protocol" {
+  description = "The protocol. If you select a protocol of '-1' (semantically equivalent to 'all', which is not a valid value here), you must specify a 'from_port' and 'to_port' equal to 0. If not icmp, tcp, udp, or '-1' use the protocol number"
+  type        = string
+  default     = "-1"
+}
