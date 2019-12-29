@@ -12,7 +12,6 @@ resource "aws_default_security_group" "default" {
 
   egress {
     protocol = var.egress_protocol
-    self = true
     from_port   = var.egress_from_port
     to_port     = var.egress_to_port
     cidr_blocks = var.egress_cidr_blocks
