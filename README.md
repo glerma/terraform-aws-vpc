@@ -300,6 +300,11 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 | ecs\_telemetry\_endpoint\_private\_dns\_enabled | Whether or not to associate a private hosted zone with the specified VPC for ECS Telemetry endpoint | bool | `"false"` | no |
 | ecs\_telemetry\_endpoint\_security\_group\_ids | The ID of one or more security groups to associate with the network interface for ECS Telemetry endpoint | list(string) | `[]` | no |
 | ecs\_telemetry\_endpoint\_subnet\_ids | The ID of one or more subnets in which to create a network interface for ECS Telemetry endpoint. Only a single subnet within an AZ is supported. If omitted, private subnets will be used. | list(string) | `[]` | no |
+| egress\_cidr\_blocks | List of IPv4 CIDR ranges to use on all egress rules | list(string) | `[ "0.0.0.0/0" ]` | no |
+| egress\_from\_port | The start port | string | `"0"` | no |
+| egress\_ipv6\_cidr\_blocks | List of IPv6 CIDR ranges to use on all egress rules | list(string) | `[ "::/0" ]` | no |
+| egress\_protocol | The protocol. If you select a protocol of '-1' (semantically equivalent to 'all', which is not a valid value here), you must specify a 'from_port' and 'to_port' equal to 0. If not icmp, tcp, udp, or '-1' use the protocol number | string | `"-1"` | no |
+| egress\_to\_port | The end range port | string | `"0"` | no |
 | elasticache\_acl\_tags | Additional tags for the elasticache subnets network ACL | map(string) | `{}` | no |
 | elasticache\_dedicated\_network\_acl | Whether to use dedicated network ACL (not default) and custom rules for elasticache subnets | bool | `"false"` | no |
 | elasticache\_inbound\_acl\_rules | Elasticache subnets inbound network ACL rules | list(map(string)) | `[ { "cidr_block": "0.0.0.0/0", "from_port": 0, "protocol": "-1", "rule_action": "allow", "rule_number": 100, "to_port": 0 } ]` | no |
@@ -363,7 +368,9 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 | enable\_sts\_endpoint | Should be true if you want to provision a STS endpoint to the VPC | bool | `"false"` | no |
 | enable\_transfer\_endpoint | Should be true if you want to provision a Transfer endpoint to the VPC | bool | `"false"` | no |
 | enable\_transferserver\_endpoint | Should be true if you want to provision a Transfer Server endpoint to the VPC | bool | `"false"` | no |
+| enable\_vpc\_flowlogs | If true, enables creation of flowlogs for the VPC | bool | `"false"` | no |
 | enable\_vpn\_gateway | Should be true if you want to create a new VPN Gateway resource and attach it to the VPC | bool | `"false"` | no |
+| endpoints\_use\_default\_security\_group | If set to true, overrides a manual list of security group ids entries with the default VPC Security Group ID. Used on VPC endpoint types of 'Interface'. | bool | `"false"` | no |
 | events\_endpoint\_private\_dns\_enabled | Whether or not to associate a private hosted zone with the specified VPC for CloudWatch Events endpoint | bool | `"false"` | no |
 | events\_endpoint\_security\_group\_ids | The ID of one or more security groups to associate with the network interface for CloudWatch Events endpoint | list(string) | `[]` | no |
 | events\_endpoint\_subnet\_ids | The ID of one or more subnets in which to create a network interface for CloudWatch Events endpoint. Only a single subnet within an AZ is supported. If omitted, private subnets will be used. | list(string) | `[]` | no |
@@ -375,6 +382,11 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 | glue\_endpoint\_security\_group\_ids | The ID of one or more security groups to associate with the network interface for Glue endpoint | list(string) | `[]` | no |
 | glue\_endpoint\_subnet\_ids | The ID of one or more subnets in which to create a network interface for Glue endpoint. Only a single subnet within an AZ is supported. If omitted, private subnets will be used. | list(string) | `[]` | no |
 | igw\_tags | Additional tags for the internet gateway | map(string) | `{}` | no |
+| ingress\_cidr\_blocks | List of IPv4 CIDR ranges to use on all ingress rules | list(string) | `[ "0.0.0.0/0" ]` | no |
+| ingress\_from\_port | The start port | string | `"0"` | no |
+| ingress\_ipv6\_cidr\_blocks | List of IPv6 CIDR ranges to use on all ingress rules | list(string) | `[ "::/0" ]` | no |
+| ingress\_protocol | The protocol. If you select a protocol of '-1' (semantically equivalent to 'all', which is not a valid value here), you must specify a 'from_port' and 'to_port' equal to 0. If not icmp, tcp, udp, or '-1' use the protocol number | string | `"-1"` | no |
+| ingress\_to\_port | The end range port | string | `"0"` | no |
 | instance\_tenancy | A tenancy option for instances launched into the VPC | string | `"default"` | no |
 | intra\_acl\_tags | Additional tags for the intra subnets network ACL | map(string) | `{}` | no |
 | intra\_dedicated\_network\_acl | Whether to use dedicated network ACL (not default) and custom rules for intra subnets | bool | `"false"` | no |
@@ -401,6 +413,7 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 | manage\_default\_network\_acl | Should be true to adopt and manage Default Network ACL | bool | `"false"` | no |
 | manage\_default\_vpc | Should be true to adopt and manage Default VPC | bool | `"false"` | no |
 | map\_public\_ip\_on\_launch | Should be false if you do not want to auto-assign public IP on launch | bool | `"true"` | no |
+| member\_account | Provide the AWS Organization Member Account ID.  Terraform will assume the role provided int his account for administrative access. | string | n/a | yes |
 | monitoring\_endpoint\_private\_dns\_enabled | Whether or not to associate a private hosted zone with the specified VPC for CloudWatch Monitoring endpoint | bool | `"false"` | no |
 | monitoring\_endpoint\_security\_group\_ids | The ID of one or more security groups to associate with the network interface for CloudWatch Monitoring endpoint | list(string) | `[]` | no |
 | monitoring\_endpoint\_subnet\_ids | The ID of one or more subnets in which to create a network interface for CloudWatch Monitoring endpoint. Only a single subnet within an AZ is supported. If omitted, private subnets will be used. | list(string) | `[]` | no |
@@ -441,6 +454,7 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 | redshift\_subnet\_suffix | Suffix to append to redshift subnets name | string | `"redshift"` | no |
 | redshift\_subnet\_tags | Additional tags for the redshift subnets | map(string) | `{}` | no |
 | redshift\_subnets | A list of redshift subnets | list(string) | `[]` | no |
+| region | Enter the region that the provider will operate in. | string | `"us-east-1"` | no |
 | rekognition\_endpoint\_private\_dns\_enabled | Whether or not to associate a private hosted zone with the specified VPC for Rekognition endpoint | bool | `"false"` | no |
 | rekognition\_endpoint\_security\_group\_ids | The ID of one or more security groups to associate with the network interface for Rekognition endpoint | list(string) | `[]` | no |
 | rekognition\_endpoint\_subnet\_ids | The ID of one or more subnets in which to create a network interface for Rekognition endpoint. Only a single subnet within an AZ is supported. If omitted, private subnets will be used. | list(string) | `[]` | no |
@@ -488,7 +502,14 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 | transferserver\_endpoint\_private\_dns\_enabled | Whether or not to associate a private hosted zone with the specified VPC for Transfer Server endpoint | bool | `"false"` | no |
 | transferserver\_endpoint\_security\_group\_ids | The ID of one or more security groups to associate with the network interface for Transfer Server endpoint | list(string) | `[]` | no |
 | transferserver\_endpoint\_subnet\_ids | The ID of one or more subnets in which to create a network interface for Transfer Server endpoint. Only a single subnet within an AZ is supported. If omitted, private subnets will be used. | list(string) | `[]` | no |
+| vpc\_cloudwatch\_log\_group\_name | The name of the flow log cloud watch group | string | `"null"` | no |
+| vpc\_cloudwatch\_log\_group\_name\_prefix | Creates a unique name beginning with the specified prefix. Conflicts with name. | string | `"null"` | no |
+| vpc\_cloudwatch\_log\_group\_retention\_in\_days | Specifies the number of days you want to retain log events in the specified log group | number | `"90"` | no |
+| vpc\_cloudwatch\_log\_group\_tags | Additional tags for the VPC Cloudwatch log group | map(string) | `{}` | no |
 | vpc\_endpoint\_tags | Additional tags for the VPC Endpoints | map(string) | `{}` | no |
+| vpc\_flowlogs\_policy\_name | Th ename of the VPC flowlogs access policy | string | `"VPCFlowlogsPolicy"` | no |
+| vpc\_flowlogs\_role\_name | The name of the flow logs IAM role | string | `"VPCFlowlogsRole"` | no |
+| vpc\_flowlogs\_traffic\_type |  | string | `"ALL"` | no |
 | vpc\_tags | Additional tags for the VPC | map(string) | `{}` | no |
 | vpn\_gateway\_id | ID of VPN Gateway to attach to the VPC | string | `""` | no |
 | vpn\_gateway\_tags | Additional tags for the VPN gateway | map(string) | `{}` | no |
@@ -497,6 +518,7 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 
 | Name | Description |
 |------|-------------|
+| aws\_cloudwatch\_log\_group\_arn | The VPC CLoudWatch Log Group ARN |
 | azs | A list of availability zones specified as argument to this module |
 | database\_network\_acl\_id | ID of the database network ACL |
 | database\_route\_table\_ids | List of IDs of database route tables |
@@ -682,6 +704,7 @@ Sometimes it is handy to have public access to Redshift clusters (for example if
 | vpc\_endpoint\_transferserver\_dns\_entry | The DNS entries for the VPC Endpoint for transferserver. |
 | vpc\_endpoint\_transferserver\_id | The ID of VPC endpoint for transferserver |
 | vpc\_endpoint\_transferserver\_network\_interface\_ids | One or more network interfaces for the VPC Endpoint for transferserver |
+| vpc\_flowlog\_id | The flowlog ID |
 | vpc\_id | The ID of the VPC |
 | vpc\_instance\_tenancy | Tenancy of instances spin up within VPC |
 | vpc\_ipv6\_association\_id | The association ID for the IPv6 CIDR block |

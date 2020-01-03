@@ -45,12 +45,12 @@ output "vpc_enable_dns_hostnames" {
 
 output "vpc_flowlog_id" {
   description = "The flowlog ID"
-  value = aws_flow_log.this.*.id
+  value       = aws_flow_log.this.*.id
 }
 
 output "aws_cloudwatch_log_group_arn" {
   description = "The VPC CLoudWatch Log Group ARN"
-  value = aws_cloudwatch_log_group.this.*.arn
+  value       = aws_cloudwatch_log_group.this.*.arn
 }
 
 //output "vpc_enable_classiclink" {

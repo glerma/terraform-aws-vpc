@@ -1,3 +1,14 @@
+variable "member_account" {
+  description = "Provide the AWS Organization Member Account ID.  Terraform will assume the role provided int his account for administrative access."
+  type        = string
+}
+
+variable "region" {
+  description = "Enter the region that the provider will operate in."
+  type        = string
+  default     = "us-east-1"
+}
+
 variable "create_vpc" {
   description = "Controls if VPC should be created (it affects almost all resources)"
   type        = bool
@@ -12,20 +23,20 @@ variable "name" {
 
 variable "enable_vpc_flowlogs" {
   description = "If true, enables creation of flowlogs for the VPC"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "vpc_flowlogs_traffic_type" {
   description = ""
-  type = string
-  default = "ALL"
+  type        = string
+  default     = "ALL"
 }
 
 variable "vpc_cloudwatch_log_group_name" {
   description = "The name of the flow log cloud watch group"
-  type = string
-  default =  null
+  type        = string
+  default     = null
 }
 
 variable "vpc_cloudwatch_log_group_tags" {
@@ -36,26 +47,26 @@ variable "vpc_cloudwatch_log_group_tags" {
 
 variable "vpc_cloudwatch_log_group_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name."
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "vpc_cloudwatch_log_group_retention_in_days" {
   description = "Specifies the number of days you want to retain log events in the specified log group"
-  type = number
-  default = 90
+  type        = number
+  default     = 90
 }
 
 variable "vpc_flowlogs_role_name" {
   description = "The name of the flow logs IAM role"
-  type = string
-  default = "VPCFlowlogsRole"
+  type        = string
+  default     = "VPCFlowlogsRole"
 }
 
 variable "vpc_flowlogs_policy_name" {
   description = "Th ename of the VPC flowlogs access policy"
-  type = string
-  default = "VPCFlowlogsPolicy"
+  type        = string
+  default     = "VPCFlowlogsPolicy"
 }
 
 variable "cidr" {
@@ -1868,8 +1879,8 @@ variable "elasticache_outbound_acl_rules" {
 
 variable "endpoints_use_default_security_group" {
   description = "If set to true, overrides a manual list of security group ids entries with the default VPC Security Group ID. Used on VPC endpoint types of 'Interface'."
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "ingress_cidr_blocks" {

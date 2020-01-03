@@ -91,7 +91,7 @@ resource "aws_vpc_endpoint" "codebuild" {
   service_name      = data.aws_vpc_endpoint_service.codebuild[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.codecommit_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.codecommit_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.codebuild_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.codebuild_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -113,7 +113,7 @@ resource "aws_vpc_endpoint" "codecommit" {
   service_name      = data.aws_vpc_endpoint_service.codecommit[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.codecommit_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.codecommit_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.codecommit_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.codecommit_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -135,7 +135,7 @@ resource "aws_vpc_endpoint" "git_codecommit" {
   service_name      = data.aws_vpc_endpoint_service.git_codecommit[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.git_codecommit_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.git_codecommit_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.git_codecommit_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.git_codecommit_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -157,7 +157,7 @@ resource "aws_vpc_endpoint" "config" {
   service_name      = data.aws_vpc_endpoint_service.config[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.config_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.config_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.config_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.config_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -179,7 +179,7 @@ resource "aws_vpc_endpoint" "sqs" {
   service_name      = data.aws_vpc_endpoint_service.sqs[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.sqs_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.sqs_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.sqs_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.sqs_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -201,7 +201,7 @@ resource "aws_vpc_endpoint" "secretsmanager" {
   service_name      = data.aws_vpc_endpoint_service.secretsmanager[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.secretsmanager_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.secretsmanager_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.secretsmanager_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.secretsmanager_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -223,7 +223,7 @@ resource "aws_vpc_endpoint" "ssm" {
   service_name      = data.aws_vpc_endpoint_service.ssm[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ssm_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ssm_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ssm_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ssm_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -246,7 +246,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
   vpc_endpoint_type = "Interface"
 
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ssmmessages_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ssmmessages_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ssmmessages_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ssmmessages_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -268,7 +268,7 @@ resource "aws_vpc_endpoint" "ec2" {
   service_name      = data.aws_vpc_endpoint_service.ec2[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ec2_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ec2_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ec2_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ec2_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -290,7 +290,7 @@ resource "aws_vpc_endpoint" "ec2messages" {
   service_name      = data.aws_vpc_endpoint_service.ec2messages[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ec2messages_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ec2messages_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ec2messages_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ec2messages_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -312,7 +312,7 @@ resource "aws_vpc_endpoint" "transferserver" {
   service_name      = data.aws_vpc_endpoint_service.transferserver[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.transferserver_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.transferserver_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.transferserver_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.transferserver_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -334,7 +334,7 @@ resource "aws_vpc_endpoint" "ecr_api" {
   service_name      = data.aws_vpc_endpoint_service.ecr_api[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ecr_api_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ecr_api_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ecr_api_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ecr_api_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -356,7 +356,7 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
   service_name      = data.aws_vpc_endpoint_service.ecr_dkr[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ecr_dkr_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ecr_dkr_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ecr_dkr_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ecr_dkr_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -378,7 +378,7 @@ resource "aws_vpc_endpoint" "apigw" {
   service_name      = data.aws_vpc_endpoint_service.apigw[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.apigw_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.apigw_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.apigw_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.apigw_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -400,7 +400,7 @@ resource "aws_vpc_endpoint" "kms" {
   service_name      = data.aws_vpc_endpoint_service.kms[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.kms_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.kms_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.kms_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.kms_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -422,7 +422,7 @@ resource "aws_vpc_endpoint" "ecs" {
   service_name      = data.aws_vpc_endpoint_service.ecs[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ecs_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ecs_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ecs_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ecs_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -445,7 +445,7 @@ resource "aws_vpc_endpoint" "ecs_agent" {
   service_name      = data.aws_vpc_endpoint_service.ecs_agent[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ecs_agent_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ecs_agent_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ecs_agent_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ecs_agent_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -468,7 +468,7 @@ resource "aws_vpc_endpoint" "ecs_telemetry" {
   service_name      = data.aws_vpc_endpoint_service.ecs_telemetry[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.ecs_telemetry_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.ecs_telemetry_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.ecs_telemetry_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.ecs_telemetry_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -491,7 +491,7 @@ resource "aws_vpc_endpoint" "sns" {
   service_name      = data.aws_vpc_endpoint_service.sns[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.sns_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.sns_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.sns_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.sns_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -514,7 +514,7 @@ resource "aws_vpc_endpoint" "monitoring" {
   service_name      = data.aws_vpc_endpoint_service.monitoring[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.monitoring_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.monitoring_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.monitoring_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.monitoring_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -537,7 +537,7 @@ resource "aws_vpc_endpoint" "logs" {
   service_name      = data.aws_vpc_endpoint_service.logs[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.logs_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.logs_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.logs_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.logs_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -560,7 +560,7 @@ resource "aws_vpc_endpoint" "events" {
   service_name      = data.aws_vpc_endpoint_service.events[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.events_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.events_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.events_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.events_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -583,7 +583,7 @@ resource "aws_vpc_endpoint" "elasticloadbalancing" {
   service_name      = data.aws_vpc_endpoint_service.elasticloadbalancing[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.elasticloadbalancing_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.elasticloadbalancing_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.elasticloadbalancing_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.elasticloadbalancing_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -606,7 +606,7 @@ resource "aws_vpc_endpoint" "cloudtrail" {
   service_name      = data.aws_vpc_endpoint_service.cloudtrail[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.cloudtrail_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.cloudtrail_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.cloudtrail_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.cloudtrail_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -629,7 +629,7 @@ resource "aws_vpc_endpoint" "kinesis_streams" {
   service_name      = data.aws_vpc_endpoint_service.kinesis_streams[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.kinesis_streams_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.kinesis_streams_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.kinesis_streams_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.kinesis_streams_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -652,7 +652,7 @@ resource "aws_vpc_endpoint" "kinesis_firehose" {
   service_name      = data.aws_vpc_endpoint_service.kinesis_firehose[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.kinesis_firehose_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.kinesis_firehose_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.kinesis_firehose_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.kinesis_firehose_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -674,7 +674,7 @@ resource "aws_vpc_endpoint" "glue" {
   service_name      = data.aws_vpc_endpoint_service.glue[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.glue_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.glue_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.glue_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.glue_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -696,7 +696,7 @@ resource "aws_vpc_endpoint" "sagemaker_notebook" {
   service_name      = data.aws_vpc_endpoint_service.sagemaker_notebook[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.sagemaker_notebook_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.sagemaker_notebook_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.sagemaker_notebook_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.sagemaker_notebook_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -718,7 +718,7 @@ resource "aws_vpc_endpoint" "sts" {
   service_name      = data.aws_vpc_endpoint_service.sts[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.sts_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.sts_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.sts_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.sts_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -740,7 +740,7 @@ resource "aws_vpc_endpoint" "cloudformation" {
   service_name      = data.aws_vpc_endpoint_service.cloudformation[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.cloudformation_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.cloudformation_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.cloudformation_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.cloudformation_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -761,7 +761,7 @@ resource "aws_vpc_endpoint" "codepipeline" {
   service_name      = data.aws_vpc_endpoint_service.codepipeline[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.codepipeline_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.codepipeline_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.codepipeline_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.codepipeline_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -782,7 +782,7 @@ resource "aws_vpc_endpoint" "appmesh_envoy_management" {
   service_name      = data.aws_vpc_endpoint_service.appmesh_envoy_management[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.appmesh_envoy_management_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.appmesh_envoy_management_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.appmesh_envoy_management_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.appmesh_envoy_management_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -803,7 +803,7 @@ resource "aws_vpc_endpoint" "servicecatalog" {
   service_name      = data.aws_vpc_endpoint_service.servicecatalog[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.servicecatalog_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.servicecatalog_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.servicecatalog_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.servicecatalog_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -824,7 +824,7 @@ resource "aws_vpc_endpoint" "storagegateway" {
   service_name      = data.aws_vpc_endpoint_service.storagegateway[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.storagegateway_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.storagegateway_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.storagegateway_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.storagegateway_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -845,7 +845,7 @@ resource "aws_vpc_endpoint" "transfer" {
   service_name      = data.aws_vpc_endpoint_service.transfer[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.transfer_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.transfer_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.transfer_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.transfer_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -866,7 +866,7 @@ resource "aws_vpc_endpoint" "sagemaker_api" {
   service_name      = data.aws_vpc_endpoint_service.sagemaker_api[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.sagemaker_api_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.sagemaker_api_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.sagemaker_api_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.sagemaker_api_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -887,7 +887,7 @@ resource "aws_vpc_endpoint" "sagemaker_runtime" {
   service_name      = data.aws_vpc_endpoint_service.sagemaker_runtime[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.sagemaker_runtime_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.sagemaker_runtime_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.sagemaker_runtime_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.sagemaker_runtime_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -909,7 +909,7 @@ resource "aws_vpc_endpoint" "appstream" {
   service_name      = data.aws_vpc_endpoint_service.appstream[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.appstream_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.appstream_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.appstream_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.appstream_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -931,7 +931,7 @@ resource "aws_vpc_endpoint" "athena" {
   service_name      = data.aws_vpc_endpoint_service.athena[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.athena_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.athena_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.athena_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.athena_endpoint_private_dns_enabled
   tags                = local.vpce_tags
@@ -953,7 +953,7 @@ resource "aws_vpc_endpoint" "rekognition" {
   service_name      = data.aws_vpc_endpoint_service.rekognition[0].service_name
   vpc_endpoint_type = "Interface"
 
-  security_group_ids  = compact(concat(local.default_sg_id,var.rekognition_endpoint_security_group_ids))
+  security_group_ids  = compact(concat(local.default_sg_id, var.rekognition_endpoint_security_group_ids))
   subnet_ids          = coalescelist(var.rekognition_endpoint_subnet_ids, aws_subnet.private.*.id)
   private_dns_enabled = var.rekognition_endpoint_private_dns_enabled
   tags                = local.vpce_tags
