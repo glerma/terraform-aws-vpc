@@ -43,6 +43,16 @@ output "vpc_enable_dns_hostnames" {
   value       = concat(aws_vpc.this.*.enable_dns_hostnames, [""])[0]
 }
 
+output "vpc_flowlog_id" {
+  description = "The flowlog ID"
+  value       = aws_flow_log.this.*.id
+}
+
+output "aws_cloudwatch_log_group_arn" {
+  description = "The VPC CLoudWatch Log Group ARN"
+  value       = aws_cloudwatch_log_group.this.*.arn
+}
+
 //output "vpc_enable_classiclink" {
 //  description = "Whether or not the VPC has Classiclink enabled"
 //  value       = concat(aws_vpc.this.*.enable_classiclink, [""])[0]
@@ -52,6 +62,7 @@ output "vpc_main_route_table_id" {
   description = "The ID of the main route table associated with this VPC"
   value       = concat(aws_vpc.this.*.main_route_table_id, [""])[0]
 }
+
 
 output "vpc_ipv6_association_id" {
   description = "The association ID for the IPv6 CIDR block"
